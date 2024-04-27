@@ -596,6 +596,8 @@ export const getCollectionsList = cache(async function (
 
   const count = collections.length
 
+  console.log("Number of collections: " + count)
+
   return {
     collections,
     count,
