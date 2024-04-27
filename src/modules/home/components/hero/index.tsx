@@ -6,7 +6,7 @@ import { ArrowRight, MoveRight } from "lucide-react"
 
 const Hero = () => {
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
+    <div className="relative h-[75vh] w-full  border-ui-border-base  bg-ui-bg-subtle">
       <div>
         <Image
           src={HeroImage}
@@ -14,7 +14,7 @@ const Hero = () => {
           className="absolute -z-1 inset-0 w-full h-full object-cover blur-[1.5px]"
         />
       </div>
-      <div className="absolute w-[400px]   text-white right-0 -translate-x-1/4 translate-y-2/3 sm:-translate-x-3/4 sm:translate-y-3/4 bg-amber-600 bg-opacity-90 p-6 rounded-lg  ">
+      <div className="absolute mx-12 sm:mx-0 sm:w-[400px] text-white right-0 sm:my-0 my-36 sm:-translate-x-3/4 sm:translate-y-3/4 bg-amber-600 bg-opacity-90 p-6 rounded-lg  ">
         <div className="text-2xl">Crafting</div>
         <div className="md:text-4xl text-3xl  font-semibold">
           {" "}

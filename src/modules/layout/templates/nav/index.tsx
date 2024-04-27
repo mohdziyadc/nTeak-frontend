@@ -12,8 +12,8 @@ export default async function Nav() {
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
+      <header className="relative bg-amber-700 bg-opacity-90 h-16 mx-auto duration-200 border-ui-border-base">
+        <nav className="content-container text-white  txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
           <div className="sm:hidden mr-4">
             <SideMenu regions={regions} />
           </div>
@@ -55,7 +55,7 @@ export default async function Nav() {
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="hover:text-ui-fg-base text-sm flex gap-2"
+                  className="hover:text-ui-fg-base text-sm  flex gap-2"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
