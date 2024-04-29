@@ -18,17 +18,21 @@ export default function ProductRail({
     return null
   }
 
+  const trimmedProducts = products.slice(0, 5)
+
   return (
-    <div className="content-container  py-12 ">
-      <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
+    <div className="content-container py-6 ">
+      <div className="flex justify-between mb-6">
+        <Text className="text-lg underline underline-offset-4">
+          {collection.title}
+        </Text>
         <InteractiveLink href={`/collections/${collection.handle}`}>
           View all
         </InteractiveLink>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
-        {products &&
-          products.map((product) => (
+      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-16">
+        {trimmedProducts &&
+          trimmedProducts.map((product) => (
             <li key={product.id}>
               <ProductPreview
                 productPreview={product}
