@@ -11,23 +11,26 @@ export default async function Footer() {
 
   return (
     <footer className="border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
+      <div className="content-container bg-amber-700  flex flex-col w-full">
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-20 ">
           <div>
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus text-slate-200 hover:text-ui-fg-base uppercase"
             >
-              Medusa Store
+              Nilambur Teak Store
             </LocalizedClientLink>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
             {product_categories && product_categories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-slate-200">
                   Categories
                 </span>
-                <ul className="grid grid-cols-1 gap-2" data-testid="footer-categories">
+                <ul
+                  className="grid grid-cols-1 gap-2"
+                  data-testid="footer-categories"
+                >
                   {product_categories?.slice(0, 6).map((c) => {
                     if (c.parent_category) {
                       return
@@ -42,7 +45,7 @@ export default async function Footer() {
 
                     return (
                       <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
+                        className="flex flex-col gap-2 text-slate-300 txt-small"
                         key={c.id}
                       >
                         <LocalizedClientLink
@@ -79,12 +82,12 @@ export default async function Footer() {
             )}
             {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-slate-200">
                   Collections
                 </span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    "grid grid-cols-1 gap-2 text-slate-300 txt-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
                     }
@@ -104,8 +107,10 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+              <span className="txt-small-plus text-slate-200">
+                Nilambur Teak
+              </span>
+              <ul className="grid grid-cols-1 gap-y-2 text-slate-300 txt-small">
                 <li>
                   <a
                     href="https://github.com/medusajs"
@@ -113,7 +118,7 @@ export default async function Footer() {
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    GitHub
+                    About
                   </a>
                 </li>
                 <li>
@@ -123,10 +128,10 @@ export default async function Footer() {
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    Documentation
+                    Contact Us
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="https://github.com/medusajs/nextjs-starter-medusa"
                     target="_blank"
@@ -135,16 +140,16 @@ export default async function Footer() {
                   >
                     Source code
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+        <div className="flex w-full mb-8 justify-center text-slate-300">
           <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
+            © {new Date().getFullYear()} Nilambur Teak Store. All rights
+            reserved.
           </Text>
-          <MedusaCTA />
         </div>
       </div>
     </footer>
