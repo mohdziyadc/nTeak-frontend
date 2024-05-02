@@ -11,6 +11,7 @@ import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
+import ImageCarousel from "../components/image-carousel/ImageCarousel"
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -26,15 +27,16 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   if (!product || !product.id) {
     return notFound()
   }
-
+  const images = product?.images
   return (
     <>
       <div
-        className="content-container bg-orange-100 flex flex-col small:flex-row small:items-start py-6 relative"
+        className="content-container bg-orange-100 flex flex-col small:flex-row small:items-start py-10 relative"
         data-testid="product-container"
       >
-        <div className="block w-1/2 relative">
-          <ImageGallery images={product?.images || []} />
+        <div className="block w-full m-auto lg:mx-8 relative">
+          {/* <ImageGallery images={product?.images || []} /> */}
+          <ImageCarousel slides={product?.images || []} />
         </div>
         <div className="flex flex-col items-start small:sticky  small:top-48 small:py-0 small:max-w-2xl w-full py-8 gap-y-6">
           <ProductInfo product={product} />
