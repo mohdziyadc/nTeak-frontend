@@ -34,7 +34,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         className="content-container bg-orange-100 flex flex-col small:flex-row small:items-start py-10 relative"
         data-testid="product-container"
       >
-        <div className="block w-full m-auto lg:mx-8 relative">
+        <div className="block w-full m-auto lg:my-8 lg:mx-8 relative">
           {/* <ImageGallery images={product?.images || []} /> */}
           <ImageCarousel slides={product?.images || []} />
         </div>
@@ -58,7 +58,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
       </div>
       <div
-        className="content-container bg-orange-100 py-16 small:py-32"
+        className="content-container bg-orange-100 py-16 small:py-20"
         data-testid="related-products-container"
       >
         <Suspense fallback={<SkeletonRelatedProducts />}>
