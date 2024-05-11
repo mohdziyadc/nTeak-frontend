@@ -92,6 +92,7 @@ export default function ProductActions({
 
   // update the options when a variant is selected
   const updateOptions = (update: Record<string, string>) => {
+    console.log("Updated Option")
     setOptions({ ...options, ...update })
   }
 

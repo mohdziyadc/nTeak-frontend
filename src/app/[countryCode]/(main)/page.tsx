@@ -10,16 +10,15 @@ import { Container } from "@medusajs/ui"
 import ProductRange from "@modules/home/components/product-range"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
-  description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+  title: "Nilambur Teak",
+  description: "Finest quality Nilambur Teak Store.",
 }
 
 const getCollectionsWithProducts = cache(
   async (
     countryCode: string
   ): Promise<ProductCollectionWithPreviews[] | null> => {
-    const { collections } = await getCollectionsList(0, 3)
+    const { collections } = await getCollectionsList(0, 2)
 
     if (!collections) {
       return null
