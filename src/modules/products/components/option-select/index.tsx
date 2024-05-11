@@ -49,7 +49,7 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
                   key={idx + 1}
                   value={v}
                   className={clx(
-                    "border-ui-border-base bg-ui-bg-subtle mb-1 text-small-regular h-10 rounded-rounded px-4 py-2 flex-1 ",
+                    "border-ui-border-base bg-ui-bg-subtle my-1 text-small-regular h-10 rounded-rounded px-4 py-2 flex-1 ",
                     {
                       "border-ui-border-interactive": v === current,
                       "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
