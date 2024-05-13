@@ -1,7 +1,12 @@
 import { Product } from "@medusajs/medusa"
 import { Metadata } from "next"
 
-import { getCollectionsList, getProductsList, getRegion } from "@lib/data"
+import {
+  getCollectionsList,
+  getHomePageCollections,
+  getProductsList,
+  getRegion,
+} from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { ProductCollectionWithPreviews } from "types/global"
@@ -18,8 +23,7 @@ const getCollectionsWithProducts = cache(
   async (
     countryCode: string
   ): Promise<ProductCollectionWithPreviews[] | null> => {
-    const { collections } = await getCollectionsList(0, 2)
-
+    const { collections } = await getHomePageCollections()
     if (!collections) {
       return null
     }

@@ -604,6 +604,30 @@ export const getCollectionsList = cache(async function (
   }
 })
 
+export const getHomePageCollections = cache(async function (): Promise<{
+  collections: ProductCollection[]
+  count: number
+}> {
+  const collectionIds = [
+    "pcol_01HWN4VN1K93KJ51AQADB1T018", //New Arrivals
+    "pcol_01HWN4TW1979CG9WEJVH9S6YEF", //Best Sellers
+  ]
+
+  const requests = collectionIds.map(
+    async (collectionId) =>
+      await medusaClient.collections
+        .retrieve(collectionId)
+        .then(({ collection }) => collection)
+  )
+  const collections = await Promise.all(requests)
+  const count = collections.length
+
+  return {
+    collections,
+    count,
+  }
+})
+
 export const getCollectionByHandle = cache(async function (
   handle: string
 ): Promise<ProductCollection> {
