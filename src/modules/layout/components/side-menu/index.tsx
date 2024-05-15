@@ -82,6 +82,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null }) => {
                           <CountrySelect
                             toggleState={toggleState}
                             regions={regions}
+                            displayInNavbar={false}
                           />
                         )}
                         <ArrowRightMini

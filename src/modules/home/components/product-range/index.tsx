@@ -3,9 +3,11 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 
-type Props = {}
+type Props = {
+  countryCode: string
+}
 
-const ProductRange = (props: Props) => {
+const ProductRange = ({ countryCode }: Props) => {
   const productRange = [
     {
       name: "Doors & Window Frames",
@@ -30,7 +32,7 @@ const ProductRange = (props: Props) => {
           key={idx}
           className="flex flex-col transform transition-transform hover:scale-110 hover:cursor-pointer gap-y-3 text-center text-amber-700 font-semibold"
         >
-          <Link href={item.handle}>
+          <Link href={`${countryCode}/${item.handle}`}>
             <Container className="relative h-[300px]">
               <Image
                 src={item.img}

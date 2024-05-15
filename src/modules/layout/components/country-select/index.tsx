@@ -8,6 +8,7 @@ import ReactCountryFlag from "react-country-flag"
 import { StateType } from "@lib/hooks/use-toggle-state"
 import { updateRegion } from "app/actions"
 import { useParams, usePathname } from "next/navigation"
+import { clx } from "@medusajs/ui"
 
 type CountryOption = {
   country: string
@@ -18,9 +19,14 @@ type CountryOption = {
 type CountrySelectProps = {
   toggleState: StateType
   regions: Region[]
+  displayInNavbar: boolean
 }
 
-const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
+const CountrySelect = ({
+  toggleState,
+  regions,
+  displayInNavbar,
+}: CountrySelectProps) => {
   const [current, setCurrent] = useState<CountryOption | undefined>(undefined)
 
   const { countryCode } = useParams()
@@ -66,7 +72,7 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
       >
         <Listbox.Button className="py-1 w-full">
           <div className="txt-compact-small flex items-start gap-x-2">
-            <span>Shipping to:</span>
+            {!displayInNavbar && <span>Shipping to:</span>}
             {current && (
               <span className="txt-compact-small flex items-center gap-x-2">
                 <ReactCountryFlag
@@ -77,12 +83,18 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
                   }}
                   countryCode={current.country}
                 />
-                {current.label}
+                {displayInNavbar
+                  ? current.country.toLocaleUpperCase()
+                  : current.label}
               </span>
             )}
           </div>
         </Listbox.Button>
-        <div className="flex relative w-full min-w-[320px]">
+        <div
+          className={clx("flex relative w-full min-w-[320px]", {
+            "min-w-fit": displayInNavbar,
+          })}
+        >
           <Transition
             show={state}
             as={Fragment}
@@ -91,7 +103,13 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options
-              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-white drop-shadow-md text-small-regular uppercase text-black no-scrollbar rounded-rounded w-full"
+              className={clx(
+                "absolute  left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-white drop-shadow-md text-small-regular uppercase text-black no-scrollbar rounded-rounded w-full",
+                {
+                  "min-w-[200px] mt-1 translate-x-[40%]": displayInNavbar,
+                  "-bottom-[calc(100%-36px)]": !displayInNavbar,
+                }
+              )}
               static
             >
               {options?.map((o, index) => {

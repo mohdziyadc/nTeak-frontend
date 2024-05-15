@@ -6,6 +6,8 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import Link from "next/link"
 import NavItems from "./components/NavItems"
+import CountrySelect from "@modules/layout/components/country-select"
+import NavCountrySelect from "./components/NavCountrySelect"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
@@ -44,6 +46,7 @@ export default async function Nav() {
                   Search
                 </LocalizedClientLink>
               )}
+              {regions && <NavCountrySelect regions={regions} />}
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"

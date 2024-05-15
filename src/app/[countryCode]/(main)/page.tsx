@@ -71,6 +71,8 @@ export default async function Home({
     return null
   }
 
+  console.log("Region: " + countryCode)
+
   return (
     <>
       <Hero />
@@ -82,7 +84,7 @@ export default async function Home({
             Inspire.
           </p>
         </div>
-        <ProductRange />
+        <ProductRange countryCode={countryCode} />
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
