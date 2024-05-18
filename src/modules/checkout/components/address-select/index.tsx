@@ -2,46 +2,39 @@ import { Listbox, Transition } from "@headlessui/react"
 import { Address, AddressPayload, Cart } from "@medusajs/medusa"
 import { ChevronUpDown } from "@medusajs/icons"
 import { clx } from "@medusajs/ui"
-import { omit } from "lodash"
 import { Fragment, useMemo } from "react"
 
 import Radio from "@modules/common/components/radio"
 import { cartUpdate } from "@modules/checkout/actions"
 import compareAddresses from "@lib/util/compare-addresses"
+import { UseMutateFunction, useMutation } from "@tanstack/react-query"
 
 type AddressSelectProps = {
   addresses: Address[]
   cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
+  handleSelectMutation: UseMutateFunction<void, Error, string, unknown>
 }
 
-const AddressSelect = ({ addresses, cart }: AddressSelectProps) => {
-  const handleSelect = (id: string) => {
-    const savedAddress = addresses.find((a) => a.id === id)
-    if (savedAddress) {
-      cartUpdate({
-        shipping_address: omit(savedAddress, [
-          "id",
-          "created_at",
-          "updated_at",
-          "country",
-          "deleted_at",
-          "metadata",
-          "customer_id",
-        ]) as AddressPayload,
-      })
-    }
-  }
+const AddressSelect = ({
+  addresses,
+  cart,
+  handleSelectMutation,
+}: AddressSelectProps) => {
+  // const handleSelect = (id: string) => {
+  //   console.log("Handle Select address called ")
+  // }
 
   const selectedAddress = useMemo(() => {
     return addresses.find((a) => compareAddresses(a, cart?.shipping_address))
   }, [addresses, cart?.shipping_address])
 
   return (
-    <Listbox onChange={handleSelect} value={selectedAddress?.id}>
+    <Listbox onChange={handleSelectMutation} value={""}>
       <div className="relative">
         <Listbox.Button
           className="relative w-full flex justify-between items-center px-4 py-[10px] text-left bg-white cursor-default focus:outline-none border rounded-rounded focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-gray-300 focus-visible:ring-offset-2 focus-visible:border-gray-300 text-base-regular"
-          data-testid="shipping-address-select">
+          data-testid="shipping-address-select"
+        >
           {({ open }) => (
             <>
               <span className="block truncate">
@@ -65,7 +58,8 @@ const AddressSelect = ({ addresses, cart }: AddressSelectProps) => {
         >
           <Listbox.Options
             className="absolute z-20 w-full overflow-auto text-small-regular bg-white border border-top-0 max-h-60 focus:outline-none sm:text-sm"
-            data-testid="shipping-address-options">
+            data-testid="shipping-address-options"
+          >
             {addresses.map((address) => {
               return (
                 <Listbox.Option
@@ -75,7 +69,10 @@ const AddressSelect = ({ addresses, cart }: AddressSelectProps) => {
                   data-testid="shipping-address-option"
                 >
                   <div className="flex gap-x-4 items-start">
-                    <Radio checked={selectedAddress?.id === address.id} data-testid="shipping-address-radio" />
+                    <Radio
+                      checked={selectedAddress?.id === address.id}
+                      data-testid="shipping-address-radio"
+                    />
                     <div className="flex flex-col">
                       <span className="text-left text-base-semi">
                         {address.first_name} {address.last_name}
