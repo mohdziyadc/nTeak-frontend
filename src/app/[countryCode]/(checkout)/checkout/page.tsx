@@ -38,7 +38,7 @@ export default async function Checkout() {
   }
 
   return (
-    <div className="grid grid-cols-1 small:grid-cols-[1fr_416px] content-container gap-x-40 py-12">
+    <div className="grid bg-orange-100 grid-cols-1 small:grid-cols-[1fr_416px] content-container gap-x-40 py-12">
       <Wrapper cart={cart}>
         <CheckoutForm />
       </Wrapper>
