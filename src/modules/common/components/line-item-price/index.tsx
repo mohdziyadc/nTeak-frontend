@@ -54,7 +54,7 @@ const LineItemPrice = ({
           data-testid="product-price"
         >
           {formatAmount({
-            amount: item.total || 0,
+            amount: item.subtotal || 0,
             region: region,
             includeTaxes: false,
           })}

@@ -65,28 +65,6 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
             </Select.Content>
           </Select>
         </div>
-        {/* {filteredOptions.map((v) => (
-          <button
-            onClick={() => {
-              console.log(v)
-              setSelectedOption(v)
-              updateOption({ [option.id]: v })
-            }}
-            key={v}
-            className={clx(
-              "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ",
-              {
-                "border-ui-border-interactive": v === current,
-                "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
-                  v !== current,
-              }
-            )}
-            disabled={disabled}
-            data-testid="option-button"
-          >
-            {v}
-          </button>
-        ))} */}
       </div>
     </div>
   )
