@@ -1,9 +1,10 @@
 import React from "react"
-import { CreditCard } from "@medusajs/icons"
+import { CreditCard, Cash } from "@medusajs/icons"
 
 import Ideal from "@modules/common/icons/ideal"
 import Bancontact from "@modules/common/icons/bancontact"
 import PayPal from "@modules/common/icons/paypal"
+import { Banknote } from "lucide-react"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
@@ -27,8 +28,8 @@ export const paymentInfoMap: Record<
     icon: <PayPal />,
   },
   manual: {
-    title: "Test payment",
-    icon: <CreditCard />,
+    title: "Cash on Delivery",
+    icon: <Cash />,
   },
   // Add more payment providers here
 }
