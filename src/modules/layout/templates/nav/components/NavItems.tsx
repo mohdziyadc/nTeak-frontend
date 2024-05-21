@@ -17,7 +17,7 @@ const NavItems = (props: Props) => {
           Home
         </Link>
         <Link
-          href={"/store"}
+          href={`/${countryCode}/store`}
           className="hover:text-ui-contrast-fg-secondary hover:cursor-pointer"
         >
           Shop

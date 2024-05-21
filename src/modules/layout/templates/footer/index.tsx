@@ -89,7 +89,7 @@ export default async function Footer() {
                   className={clx(
                     "grid grid-cols-1 gap-2 text-slate-300 txt-small",
                     {
-                      "grid-cols-2": (collections?.length || 0) > 3,
+                      "grid-rows-1": (collections?.length || 0) > 3,
                     }
                   )}
                 >
