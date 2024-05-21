@@ -1,12 +1,18 @@
 import { Order } from "@medusajs/medusa"
 import { Text } from "@medusajs/ui"
+import TimelineStepper from "../timeline-stepper"
 
 type OrderDetailsProps = {
   order: Order
   showStatus?: boolean
+  showAfterConfirmation: boolean
 }
 
-const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
+const OrderDetails = ({
+  order,
+  showStatus,
+  showAfterConfirmation,
+}: OrderDetailsProps) => {
   const formatStatus = (str: string) => {
     const formatted = str.split("_").join(" ")
 
@@ -17,13 +23,19 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
     <div>
       <Text>
         We have sent the order confirmation details to{" "}
-        <span className="text-ui-fg-medium-plus font-semibold" data-testid="order-email">
+        <span
+          className="text-ui-fg-medium-plus font-semibold"
+          data-testid="order-email"
+        >
           {order.email}
         </span>
         .
       </Text>
       <Text className="mt-2">
-        Order date: <span data-testid="order-date">{new Date(order.created_at).toDateString()}</span>
+        Order date:{" "}
+        <span data-testid="order-date">
+          {new Date(order.created_at).toDateString()}
+        </span>
       </Text>
       <Text className="mt-2 text-ui-fg-interactive">
         Order number: <span data-testid="order-id">{order.display_id}</span>
@@ -40,13 +52,17 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
             </Text>
             <Text>
               Payment status:{" "}
-              <span className="text-ui-fg-subtle " sata-testid="order-payment-status">
+              <span
+                className="text-ui-fg-subtle "
+                sata-testid="order-payment-status"
+              >
                 {formatStatus(order.payment_status)}
               </span>
             </Text>
           </>
         )}
       </div>
+      {showAfterConfirmation && <TimelineStepper order={order} />}
     </div>
   )
 }
