@@ -1,3 +1,4 @@
+"use client"
 import { Order } from "@medusajs/medusa"
 import React, { useEffect, useState } from "react"
 import "./index.css"
