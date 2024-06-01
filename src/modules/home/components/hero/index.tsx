@@ -3,10 +3,12 @@ import { Github } from "@medusajs/icons"
 import { Heading } from "@medusajs/ui"
 import Image from "next/image"
 import HeroImage from "../../../../../public/wooden_hero.jpeg"
-import { ArrowRight, MoveRight } from "lucide-react"
+import { ArrowRight, MoveDown, MoveRight } from "lucide-react"
 import { Button } from "@modules/common/components/shadcn-ui/button"
+import { useState } from "react"
 
 const Hero = () => {
+  const [buttonHovered, setButtonHovered] = useState(false)
   return (
     <div className="relative h-[75vh] w-full  border-ui-border-base  bg-ui-bg-subtle">
       <div>
@@ -28,10 +30,10 @@ const Hero = () => {
           timeless elegance with unmatched durability.
         </div>
 
-        <Button className="px-4 mt-4 py-2 hover:bg-orange-600 hover:text-white text-orange-600  w-fit flex flex-row justify-between items-center border-0 bg-orange-200">
-          <div className=" text-lg font-bold mr-2">Show me</div>
+        <Button className="px-4 mt-4 shadow-lg py-2 hover:bg-orange-600 hover:text-white text-orange-600  w-fit flex flex-row justify-between items-center border-0 bg-orange-200">
+          <div className=" text-lg font-bold mr-2">Explore More</div>
           <div>
-            <MoveRight className="h-4 w-4 " />
+            <MoveDown className="h-4 w-4" />
           </div>
         </Button>
       </div>
