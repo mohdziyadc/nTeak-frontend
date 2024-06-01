@@ -12,7 +12,7 @@ import { UseMutateFunction, useMutation } from "@tanstack/react-query"
 type AddressSelectProps = {
   addresses: Address[]
   cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
-  handleSelectMutation: UseMutateFunction<void, Error, string, unknown>
+  handleSelectMutation: UseMutateFunction<void, unknown, string, void>
 }
 
 const AddressSelect = ({

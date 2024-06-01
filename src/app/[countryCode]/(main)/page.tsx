@@ -13,6 +13,7 @@ import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 import { Container } from "@medusajs/ui"
 import ProductRange from "@modules/home/components/product-range"
+import { Button } from "@modules/common/components/shadcn-ui/button"
 
 export const metadata: Metadata = {
   title: "Nilambur Teak",

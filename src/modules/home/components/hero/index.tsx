@@ -1,8 +1,10 @@
+"use client"
 import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
 import Image from "next/image"
 import HeroImage from "../../../../../public/wooden_hero.jpeg"
 import { ArrowRight, MoveRight } from "lucide-react"
+import { Button } from "@modules/common/components/shadcn-ui/button"
 
 const Hero = () => {
   return (
@@ -25,6 +27,7 @@ const Hero = () => {
           <span className="font-bold">Nilambur Teak</span>, our products blend
           timeless elegance with unmatched durability.
         </div>
+
         <Button className="px-4 mt-4 py-2 hover:bg-orange-600 hover:text-white text-orange-600  w-fit flex flex-row justify-between items-center border-0 bg-orange-200">
           <div className=" text-lg font-bold mr-2">Show me</div>
           <div>
