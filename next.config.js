@@ -33,6 +33,10 @@ const nextConfig = withStoreConfig({
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "nilambur-teak-images.s3.ap-south-1.amazonaws.com",
+      },
     ],
   },
 })
