@@ -8,6 +8,8 @@ import Link from "next/link"
 import NavItems from "./components/NavItems"
 import CountrySelect from "@modules/layout/components/country-select"
 import NavCountrySelect from "./components/NavCountrySelect"
+import { IconButton } from "@medusajs/ui"
+import { Search } from "lucide-react"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
@@ -43,7 +45,12 @@ export default async function Nav() {
                   scroll={false}
                   data-testid="nav-search-link"
                 >
-                  Search
+                  <IconButton
+                    variant={"transparent"}
+                    className="hover:bg-orange-800 h-10 w-10 "
+                  >
+                    <Search className="text-white " />
+                  </IconButton>
                 </LocalizedClientLink>
               )}
               {regions && <NavCountrySelect regions={regions} />}
